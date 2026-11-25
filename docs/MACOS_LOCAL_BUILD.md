@@ -30,7 +30,7 @@ Debe mostrar `cinematic-metal`.
 ## Ejecutar el diagnóstico
 
 ```sh
-/tools/cinematic-metal/macos-preflight.sh
+./tools/cinematic-metal/macos-preflight.sh
 ```
 El diagnóstico comprueba arquitectura, versión de macOS, Xcode Command Line Tools, Apple clang, SDK, Java/Javac, archivos del build y rama Git. No ejecuta Gradle ni modifica archivos.
 
@@ -55,7 +55,7 @@ La primera compilación puede descargar herramientas/dependencias y necesita con
 - JAR: `metal/build/libs/`.
 - Bridge nativo dentro del JAR: lista su contenido con `jar tf metal/build/libs/<archivo>.jar | grep -E 'libmcmetal\.dylib|fabric.mod.json'`.
 
-Un `BUILD SUCCESSFUL` confirma la compilación de ese módulo en esa máquina. **No confirma todaviía** que Minecraft arranque, que se vea correctamente el mundo, que funcionen todas las funciones de Metal ni que el rendimiento sea bueno en un M2. Eso requiere una instancia DEV aislada, las pruebas de juego y capturas/medidas en tu Mac.
+Un `BUILD SUCCESSFUL` confirma la compilación de ese módulo en esa máquina. **No confirma todavía** que Minecraft arranque, que se vea correctamente el mundo, que funcionen todas las funciones de Metal ni que el rendimiento sea bueno en un M2. Eso requiere una instancia DEV aislada, las pruebas de juego y capturas/medidas en tu Mac.
 
 ## Aislamiento y seguridad
 
