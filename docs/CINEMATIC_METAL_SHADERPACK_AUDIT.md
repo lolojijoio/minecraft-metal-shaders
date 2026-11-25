@@ -60,7 +60,7 @@ La versión publicada consultada es Minecraft Metal `0.2.2` + Shader Loader `0.1
 - La validación histórica de BSL 0.1.2 documenta 583 compilaciones de pipelines, pero la propia documentación indica que la validación final de build/juego/paquete de la rama 0.1.3 aún está pendiente.
 - El proyecto informa haber sido generado completamente con Codex y no presenta esa prueba como auditoría independiente de código/seguridad.
 
-* *Qué reutilizar como diseño:** separar `shader-loader` del renderer; tener un parser/config de pack; preprocesar GLSL y normalizar uniforms/atributos; convertir el pack a un plan de pases; renderizar sombras, geometría opaca/transparente, deferred/composite/final con targets ping-pong; reiniciar el historial temporal tras cambios de mundo/tamaño; y crear pruebas específicas de compilación y escenas reales.
+**Qué reutilizar como diseño:** separar `shader-loader` del renderer; tener un parser/config de pack; preprocesar GLSL y normalizar uniforms/atributos; convertir el pack a un plan de pases; renderizar sombras, geometría opaca/transparente, deferred/composite/final con targets ping-pong; reiniciar el historial temporal tras cambios de mundo/tamaño; y crear pruebas específicas de compilación y escenas reales.
 
 **Por qué no copiarlo literalmente:** el loader más reciente todavía importa contratos propios del backend (`dev.kausik.metal.*`) y del scene optimizer (`dev.kausik.scene.*`); su `fabric.mod.json` exige `minecraft_metal ~0.2.2`, no MCOpt. Su `PackPipeline` usa ayudantes específicos del renderer. La arquitectura de passes y el adaptador GLSL son referencias, pero requieren una capa de compatibilidad para `MetalHooks`, `PassDelegate`, `MetalBridge`, los bindings de MCOpt y su formato de geometría.
 
@@ -102,7 +102,7 @@ El flujo objetivo es:
 
 - Un pack puede compilar y, aun así, verse mal por matrices, reversed-Z, alpha test, lightmap, coordenadas de atlas, buffer flipping, blending, depth snapshots, sombras, orden de pases o temporales. Cada uno requiere prueba visual y de GPU.
 - RenderPearl por sí solo no representa todas las capacidades que algunos packs piden. No afirmar soporte de compute/SSBO/storage images porque shaderc haya traducido un módulo: también deben existir allocations, bindings, sincronización y ejecución correctas en Metal.
-- Li ruta rápida de terreno MSL de MCOpt puede colisionar con el vertex format y los programas de un shaderpack. Primero debe haber un modo seguro que la desactive o la adapte.
+- La ruta rápida de terreno MSL de MCOpt puede colisionar con el vertex format y los programas de un shaderpack. Primero debe haber un modo seguro que la desactive o la adapte.
 - El código externo MIT se puede estudiar como referencia; si se incorpora código, se deben conservar avisos MIT y revisar cada dependencia/archivo. No se copiará código AGPL/LGPL de Iris/glsl-transformer ni LGPL de Vitrail sin una decisión explícita de licencia y distribución.
 - Los packs son propiedad de sus autores. No incluir ZIPs, GLSL o texturas de BSL/Complementary en este repositorio ni precompilar sus MSL para redistribuirlos. Las pruebas locales deben usar archivos que el usuario obtenga legalmente.
 
