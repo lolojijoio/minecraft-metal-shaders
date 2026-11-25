@@ -44,7 +44,7 @@ Los comentarios de estos componentes mencionan explícitamente el futuro runtime
 
 ### 2.1 Minecraft Metal + Minecraft Shader Loader (la referencia principal)
 
-Repositorio: <https://github.com/Kausik-Velaga/minecraft-metal-renderere>  
+Repositorio: <https://github.com/Kausik-Velaga/minecraft-metal-renderer>  
 Documentación del loader: <https://github.com/Kausik-Velaga/minecraft-metal-renderer/blob/main/docs/shader-loader.md>  
 Licencia del proyecto: MIT.
 
@@ -56,7 +56,7 @@ La versión publicada consultada es Minecraft Metal `0.2.2` + Shader Loader `0.1
 - Compute shaders, storage images, geometry/tessellation stages y texturas 3D no están soportados por el loader.
 - Algunas directivas/pases de setup, formatos de shadow-color y ciertos modos de autofocus DOF son rechazados.
 - Hay límites de materiales/atlas, glint combinado y rutas de entidades. Combinarlo con otros reemplazos de renderizado no está validado.
-- No tiene todaviía pantalla de ajustes propia ni cambio de pack en vivo; usa archivo de configuración y reinicio.
+- No tiene todavía pantalla de ajustes propia ni cambio de pack en vivo; usa archivo de configuración y reinicio.
 - La validación histórica de BSL 0.1.2 documenta 583 compilaciones de pipelines, pero la propia documentación indica que la validación final de build/juego/paquete de la rama 0.1.3 aún está pendiente.
 - El proyecto informa haber sido generado completamente con Codex y no presenta esa prueba como auditoría independiente de código/seguridad.
 
@@ -95,7 +95,7 @@ El flujo objetivo es:
 
 - **Etapa A — BSL default:** pack de prueba obtenido por el usuario; sin cómputo de iluminación multicolor. Validar opacos, cutout, agua/transparencia, mano, entidades, sombras, post y cambio de dimensión.
 - **Etapa B — pack clásico adicional:** Complementary Reimagined con un perfil conservador. Comparar contra Iris/OpenGL en la misma escena y el mismo Mac; una compilación correcta no demuestra equivalencia visual.
-- **Etapa C — capacidades Metal:** añadir compute, imagenes/SSBOs y comparación de sombras solo tras crear contratos explícitos en `MetalBridge`, límites de dispositivo y pruebas GPU. La iluminación coloreada de Complementary pertenece a una etapa posterior.
+- **Etapa C — capacidades Metal:** añadir compute, imágenes/SSBOs y comparación de sombras solo tras crear contratos explícitos en `MetalBridge`, límites de dispositivo y pruebas GPU. La iluminación coloreada de Complementary pertenece a una etapa posterior.
 - **Etapa D — producto:** selector de pack/opciones, diagnósticos, perfiles y pruebas de regresión. Los presets propios Cinematic Metal permanecen separados del sistema de opciones del pack.
 
 ## 4. Riesgos técnicos y de licencia
